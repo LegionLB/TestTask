@@ -221,7 +221,13 @@ public class TestForTestTask {
     @Test(priority = 15)
     public void negativeFlowSQLInjection(){
 
+        driver.findElement(By.xpath("//input[@id='firstname']")).sendKeys("'basic sql injection'");
 
+        driver.findElement(By.xpath("//input[@type='submit']")).click();
+
+        WebElement checked = driver.findElement(By.xpath("//span[@class='values-tested']"));
+
+        assertEquals(checked.getText(), "4");
 
     }
 
